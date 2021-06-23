@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
+
+export const counter$ = timer(0, 1000).pipe(shareReplay());
 
 @Component({
   selector: 'app-root',
@@ -13,6 +17,9 @@ import { Router } from '@angular/router';
       <div class="col-12">
         <button type="button" class="btn btn-outline-primary me-4" (click)="navigateTo('will-work')">will-work</button>
         <button type="button" class="btn btn-outline-primary me-4" (click)="navigateTo('wont-work')">wont-work</button>
+        <button type="button" class="btn btn-outline-primary me-4" (click)="navigateTo('wont-work-ugly-fix')">
+          wont-work (w/ ugly fix)
+        </button>
       </div>
     </div>
     <div class="row">
@@ -26,7 +33,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private readonly _router: Router) {}
 
-  navigateTo(path: 'will-work' | 'wont-work'): void {
+  navigateTo(path: 'will-work' | 'wont-work' | 'wont-work-ugly-fix'): void {
     this._router.navigate([path]);
   }
 }
