@@ -3,7 +3,24 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="font-weight-light">Why unsubscribe on destroy p.o.c.</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <button type="button" class="btn btn-outline-primary me-4" (click)="navigateTo('will-work')">will-work</button>
+        <button type="button" class="btn btn-outline-primary me-4" (click)="navigateTo('wont-work')">wont-work</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 py-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>`,
   styles: []
 })
 export class AppComponent {
